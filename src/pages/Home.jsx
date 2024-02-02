@@ -6,8 +6,11 @@ import CTAButton from '../components/core/HomePage/Button';
 import Banner from "../assets/Images/banner.mp4"
 import CodeBlocks from "../components/core/HomePage/CodeBlocks"
 import "../App.css"
+import Footer from '../components/common/Footer';
 import LearningLanguage from "../components/core/HomePage/LearningLanguage";
 import Timeline from "../components/core/HomePage/Timeline"
+import InstructorSection from '../components/core/HomePage/InstructorSection';
+import ExploreMore from '../components/core/HomePage/ExploreMore';
 
 const Home = () => {
 
@@ -70,7 +73,7 @@ const Home = () => {
                     </div>}
                     subheading={"Our courses are designed and taught by industry experts who have years of experience in coding and are passionate about sharing their knowledge with You"}
                     ctabtn1={{
-                        btnText: "try it yourself",
+                        btnText: "Try it yourself",
                         linkto: "/signup",
                         active: true,
                     }}
@@ -97,7 +100,7 @@ const Home = () => {
                     </div>}
                     subheading={"Our courses are designed and taught by industry experts who have years of experience in coding and are passionate about sharing their knowledge with You"}
                     ctabtn1={{
-                        btnText: "try it yourself",
+                        btnText: "Try it yourself",
                         linkto: "/signup",
                         active: true,
                     }}
@@ -111,6 +114,9 @@ const Home = () => {
                     backgroundGradient={<div className="codeblock1 absolute"></div>}
                 />
             </div>
+
+            {/* Explore More Section */}
+            <ExploreMore />
 
         </div>    
 
@@ -146,7 +152,7 @@ const Home = () => {
                 <div className='flex flex-row gap-5 mb-10 mt-[95px]'>
 
                     <div className='text-4xl font-semibold w-[45%]'>
-                        Get the skills you need for a
+                        Get the skills you need for a {" "}
                         <HighLightText text={"Job that is in Demand "}/>    
                     </div>
 
@@ -165,10 +171,24 @@ const Home = () => {
                 <Timeline />
 
                 <LearningLanguage />
-                
+
             </div>
 
        </div>
+
+        {/* Section 3 */}
+        <div className='w-11/12 mx-auto max-w-maxContent flex-col items-cneter justify-between gap-8'>
+            
+            <InstructorSection />
+
+            <h2 className='text-center text-4xl font-semibold mt-10'>Reviews From Other Learners`</h2>
+             
+        </div>   
+
+        
+        {/* Section 4 */}
+        <Footer />         
+
     </div>
   )
 }
