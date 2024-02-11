@@ -2,6 +2,8 @@ import React, { useState } from 'react'
 import {HomePageExplore} from "../../../data/homepage-explore"
 import HighLightText from './HighLightText';
 import CourseCard from './CourseCard';
+import { HiUsers } from "react-icons/hi";
+import { ImTree } from "react-icons/im";
 
 const tabsName = [
     "Free", "New to Coding", "Most Popular", "Skill Paths", "Career Paths"
@@ -20,6 +22,8 @@ const ExploreMore = () => {
         setCurrentCard(result[0].courses[0].heading);
     }
 
+    console.log("Courses : ", courses);
+
   return (
     <div>
 
@@ -32,8 +36,8 @@ const ExploreMore = () => {
             Learn To Build Anything You Can Imagine
         </p>
 
-        <div className='flex flex-row rounded-full bg-richblack-800 mb-2 border-richblack-100
-        px-1 py-1'>
+        <div className='flex flex-row rounded-full bg-richblack-800 mb-4 border-richblack-100
+        px-1 py-1 w-fit mx-auto'>
             {
                 tabsName.map( (element, index) => {
                     return(
@@ -49,22 +53,59 @@ const ExploreMore = () => {
             }
         </div>
 
-        <div className=''>
+        {/* <div className=''>
 
-        </div>
+        </div> */}
 
         {/* Course Card Group */}
-        <div className='absolute flex flex-row gap-10 justify-between w-full'>
+        <div className='grid grid-cols-3 gap-16 justify-center w-full items-center mb-10'>
+            
             {
                 courses.map( (element, index) => {
-                    return(
-                        <CourseCard 
-                        key={index}
-                        cardData={element}
-                        currentCard={currentCard}
-                        setCurrentCard={setCurrentCard}
-                        />
+                    return (
+                        <div key={index} className='relative mt-10'>
+
+                            <div className='relative z-40 flex w-[310px] h-[310px] items-start text-richblue-900
+                            flex-col  bg-white px-5'>
+                            
+                                <div className='text-richblack-700 font-semibold text-2xl mt-4'> 
+                                    {element.heading}
+                                </div>
+                                
+                                <div className='mt-4'>
+                                    {element.description}
+                                </div>
+
+                                <div className='absolute top-[75%] mx-auto w-[88%] h-[1px] bg-richblack-50'></div>
+                                
+                                <div className='flex justify-between absolute top-[82%]'>
+                                    
+                                    <div className='flex flex-row items-center mr-14'>   
+                                        <HiUsers/>
+                                        <div className='ml-2'>{element.level}</div>
+                                    </div>
+
+                                    <div className='relativeflex flex-row items-center '>
+                                        <ImTree className='absolute left-[58%]'/>
+                                        <div className='ml-2 '>{element.lessionNumber} Lessons</div>
+                                    </div>
+                                </div>
+                            </div> 
+
+                            <div className='z-20 absolute w-[310px] h-[310px] bg-yellow-50 top-[4%] right-[-4%]'>
+                            </div>
+                        </div>
+                          
                     )
+                    // return(
+                    //     <CourseCard 
+                    //     key={index}
+                    //     cardData={element}
+                    //     currentCard={currentCard}
+                    //     setCurrentCard={setCurrentCard}
+                    //     />
+                    // )
+                    
                 })
             }
         </div>
