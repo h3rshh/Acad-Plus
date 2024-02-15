@@ -1,5 +1,5 @@
 const bcrypt = require("bcryptjs")
-const User = require("../models/User")
+const UserModel = require("../models/User")
 const OTP = require("../models/OTP")
 const jwt = require("jsonwebtoken")
 const otpGenerator = require("otp-generator")
@@ -47,7 +47,7 @@ exports.signup = async (req, res) => {
     }
 
     // Check if user already exists
-    const existingUser = await User.findOne({ email })
+    const existingUser = await UserModel.findOne({ email })
     if (existingUser) {
       return res.status(400).json({
         success: false,
@@ -56,6 +56,8 @@ exports.signup = async (req, res) => {
     }
 
     // Find the most recent OTP for the email
+
+
     const response = await OTP.find({ email }).sort({ createdAt: -1 }).limit(1)
     console.log(response)
     if (response.length === 0) {
@@ -74,6 +76,7 @@ exports.signup = async (req, res) => {
 
     // Hash the password
     const hashedPassword = await bcrypt.hash(password, 10)
+    console.log("Hashed Password created : ", hashedPassword)
 
     // Create the user
     let approved = ""
@@ -86,17 +89,36 @@ exports.signup = async (req, res) => {
       about: null,
       contactNumber: null,
     })
-    const user = await User.create({
-      firstName,
-      lastName,
-      email,
-      contactNumber,
-      password: hashedPassword,
-      accountType: accountType,
-      approved: approved,
-      additionalDetails: profileDetails._id,
-      image: "",
-    })
+
+
+    console.log("All fine before Create ")
+
+    const userPayload = "";
+    // const userPayload = {
+    //     firstName,
+    //     lastName,
+    //     email,
+    //     contactNumber,
+    //     password: hashedPassword,
+    //     accountType: accountType,
+    //     approved: approved,
+    //     additionalDetails: profileDetails._id,
+    //     image: "",
+    //   }
+    const user = await UserModel.create(userPayload);
+    console.log("User Created : ", user)
+    //   firstName,
+    //   // lastName,
+    //   // email,
+    //   // contactNumber,
+    //   // password: hashedPassword,
+    //   // accountType: accountType,
+    //   // approved: approved,
+    //   // additionalDetails: profileDetails._id,
+    //   // image: "",
+    // })
+
+    // console.log("User : ", user);
 
     return res.status(200).json({
       success: true,
@@ -104,7 +126,6 @@ exports.signup = async (req, res) => {
       message: "User registered successfully",
     })
   } catch (error) {
-    console.error(error)
     return res.status(500).json({
       success: false,
       message: "User cannot be registered. Please try again.",
@@ -185,34 +206,42 @@ exports.sendotp = async (req, res) => {
 
     // Check if user is already present
     // Find user with provided email
-    const checkUserPresent = await User.findOne({ email })
-    // to be used in case of signup
+    // const checkUserPresent = await User.findOne({ email })
+    // // to be used in case of signup
 
-    // If user found with provided email
-    if (checkUserPresent) {
-      // Return 401 Unauthorized status code with error message
-      return res.status(401).json({
-        success: false,
-        message: `User is Already Registered`,
-      })
-    }
+    // // If user found with provided email
+    // if (checkUserPresent) {
+    //   // Return 401 Unauthorized status code with error message
+    //   return res.status(401).json({
+    //     success: false,
+    //     message: `User is Already Registered`,
+    //   })
+    // }
+    // else{
+    //   console.log("No user with this email exists");
+    // }
+
 
     var otp = otpGenerator.generate(6, {
       upperCaseAlphabets: false,
       lowerCaseAlphabets: false,
       specialChars: false,
     })
-    const result = await OTP.findOne({ otp: otp })
-    console.log("Result is Generate OTP Func")
-    console.log("OTP", otp)
-    console.log("Result", result)
-    while (result) {
-      otp = otpGenerator.generate(6, {
-        upperCaseAlphabets: false,
-      })
-    }
+    console.log("The value of OTP is : ", otp)
+
+    // const result = await OTP.findOne({ otp: otp })
+    // console.log("Result is Generate OTP Func")
+    // console.log("OTP", otp)
+    // console.log("Result", result)
+    // while (result) {
+    //   otp = otpGenerator.generate(6, {
+    //     upperCaseAlphabets: false,
+    //   })
+    // }
     const otpPayload = { email, otp }
-    const otpBody = await OTP.create(otpPayload)
+    console.log("OTP Payload : ", otpPayload);
+    const otpBody = await OTP.create(otpPayload);
+  
     console.log("OTP Body", otpBody)
     res.status(200).json({
       success: true,

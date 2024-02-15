@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import {Link} from "react-router-dom"
-import { resetPasswordToken } from '../../server/controllers/ResetPassword';
+// import { resetPasswordToken } from '../../server/controllers/ResetPassword';
 
 const ForgotPassword = () => {
 
@@ -12,7 +12,7 @@ const ForgotPassword = () => {
 
    const handleSubmit = (e) => {
       e.preventDefault();
-      dispatch(resetPasswordToken) (email, setEmailSent);
+      // dispatch(resetPasswordToken) (email, setEmailSent);
    }
 
   return (
