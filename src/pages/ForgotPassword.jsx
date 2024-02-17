@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import {Link} from "react-router-dom"
-// import { resetPasswordToken } from '../../server/controllers/ResetPassword';
+// import resetPasswordToken from '../../server/controllers/resetPassController'
+// import { resetPasswordToken } from 'home/Desktop/Codes/Web_Dev/7_Study_Notion/Acad-Zentih/server/controllers'
 
 const ForgotPassword = () => {
 
