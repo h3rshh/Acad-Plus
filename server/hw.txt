@@ -1,5 +1,0 @@
-AuthController - ChangePassword
-Course Controller - Update tag to also include the newly created course
-Profile Controller - After Account Deletion, unenroll from course and Cron Job
-Section Controller - Populate inside Create Section
-Section Controller - Update The Sections's array in course to accomodate for a deleted Section
