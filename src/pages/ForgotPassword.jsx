@@ -1,19 +1,18 @@
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import {Link} from "react-router-dom"
-// import resetPasswordToken from '../../server/controllers/resetPassController'
-// import { resetPasswordToken } from 'home/Desktop/Codes/Web_Dev/7_Study_Notion/Acad-Zentih/server/controllers'
+import { resetPasswordToken } from 'services/operations/authAPI'
 
 const ForgotPassword = () => {
 
    const {emailSent, setEmailSent} = useState(false);
-   const  {email, setEmail} = useState("");
+   const  [email, setEmail] = useState("");
    const {loading} = useSelector( (state) => state.auth);
    const dispatch = useDispatch();
 
    const handleSubmit = (e) => {
       e.preventDefault();
-      // dispatch(resetPasswordToken) (email, setEmailSent);
+      dispatch(resetPasswordToken(email, setEmailSent));
    }
 
   return (
@@ -33,7 +32,7 @@ const ForgotPassword = () => {
                   !emailSent && (
                      <label>
                         <p>Email Address</p>
-                        <input required type='email' name='email' value={email}
+                        <input required type='email' name='email' value={email} className='text-black'
                            onChange={(e) => setEmail(e.target.value)} placeholder='Enter Your Email'/>
                      </label>
                   )

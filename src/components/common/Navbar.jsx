@@ -26,6 +26,7 @@ const Navbar = () => {
   const token = null;
 
   const location = useLocation();
+  
   const matchRoute = (route) => {
     return matchPath({path:route}, location.pathname);
   }
@@ -47,7 +48,8 @@ const Navbar = () => {
   }
 
   useEffect( () => {
-    // fetchSubLinks();
+    // fetchSubLinks(); 
+    console.log("Use Effect Hook Used")
   }, [])
 
   return (
@@ -70,6 +72,7 @@ const Navbar = () => {
                     {
                        link.title === "Catalog" ? (
                        <div className='relative flex items-center gap-2 group'>
+                        
                           <p>{link.title}</p>
                           <IoIosArrowDropdownCircle />
 
