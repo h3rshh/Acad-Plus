@@ -136,7 +136,8 @@ export function resetPasswordToken(email , setEmailSent) {
   return async(dispatch) => {
     dispatch(setLoading(true));
     try{
-      const response = await apiConnector("POST", RESETPASSTOKEN_API, {email, })
+      console.log("Entered try block")
+      const response = await apiConnector("POST", RESETPASSTOKEN_API, {email})
 
       console.log("RESET PASSWORD TOKEN RESPONSE....", response);
 
@@ -149,7 +150,8 @@ export function resetPasswordToken(email , setEmailSent) {
       setEmailSent(true);
     }
     catch(error) {
-      console.log("RESET PASSWORD TOKEN Error", error);
+      console.log(error.response.data)
+      console.log("RESET PASSWORD TOKEN Error : ", error);
       toast.error("Failed to send email for resetting password");
     }
     dispatch(setLoading(false));
