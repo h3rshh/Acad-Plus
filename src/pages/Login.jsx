@@ -1,6 +1,6 @@
 import React from 'react'
-import Template from '../components/Template'
-import loginImg from "../assets/login.png"
+import login from "../assets/Images/login/login.png"
+import Template from '../components/loginAndSignup/Template' 
 
 function Login(props) {
   const setLoggedIn = props.setLoggedIn; 
@@ -11,9 +11,8 @@ function Login(props) {
         title="Welcome Back"
         desc1="Build Skills Today, Tomorrow and Beyond"
         desc2="Education to Future-Proff your Career"
-        image={loginImg}
+        image={login}
         formType="login"
-        setLoggedIn={setLoggedIn}
         
       />  
     </div>

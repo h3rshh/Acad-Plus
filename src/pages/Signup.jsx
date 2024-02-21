@@ -1,6 +1,6 @@
 import React from 'react'
-import signupImg from "../assets/signup.png"
-import Template from '../components/Template' 
+import signupImg from "../assets/Images/login/signup.png"
+import Template from '../components/loginAndSignup/Template' 
 
 
 const SignUp = (props) => {
@@ -13,7 +13,6 @@ const SignUp = (props) => {
         desc2="Education to Future-Proff your Career"
         image={signupImg}
         formType="signup"
-        setLoggedIn={setLoggedIn}
       />  
     </div>
   )
