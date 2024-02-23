@@ -7,6 +7,8 @@ import { Quote } from 'components/core/About/Quote'
 import FoundingStory from '../assets/Images/FoundingStory.png'
 import { StatsComponent } from "../components/core/About/StatsComponent"
 import LearningGrid from 'components/core/LearningGrid'
+import { ContactForm } from 'components/core/About/ContactForm'
+import Footer from 'components/common/Footer' 
 
 export const About = () => {
 
@@ -89,12 +91,17 @@ export const About = () => {
       <StatsComponent/>
 
       {/* Section 5 */}
-      <section>
+      <section className='mx-auto flex flex-col items-center justify-between 
+         gap-5 mb-[140px]'>
          <LearningGrid className="mx-auto"/>
          <ContactForm/>
       </section>
 
-      
+      <section>
+         Reviews from other Members
+      </section>
+
+      <Footer/>
       
     </div>
 
