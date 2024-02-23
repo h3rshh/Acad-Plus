@@ -147,7 +147,7 @@ export const ContactFormComponent = () => {
           {/* Message */}
           <div className="flex flex-col gap-2">            
             <label htmlFor='message' className='label-style'>Your Message</label>
-            <textarea 
+             <textarea 
               name='message'
               id='message'
               cols="30"

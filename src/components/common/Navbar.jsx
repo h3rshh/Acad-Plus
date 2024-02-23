@@ -12,6 +12,9 @@ import {IoIosArrowDropdownCircle} from "react-icons/io"
 
 const Navbar = () => {
 
+
+  // const [subLinks, setSubLinks] = useState([{title:"python", link:"/catalog/python"}]);
+
   const subLinks = [
     {
       title: "python",
@@ -23,7 +26,7 @@ const Navbar = () => {
     }
   ]
 
-  const token = null;
+  // const token = null;
 
   const location = useLocation();
   
@@ -31,13 +34,13 @@ const Navbar = () => {
     return matchPath({path:route}, location.pathname);
   }
 
-  // const {token} = useSelector( (state) => state.auth)
+  const {token} = useSelector( (state) => state.auth)
   const {user} = useSelector( (state) => state.profile)
   const {totalItems} = useSelector( (state) => state.cart)
-  // const {subLinks, setSubLinks} = useState([]);
 
   const fetchSubLinks = async() => {
     try{
+      // setSubLinks(null); 
       const result = await apiConnector("GET", categories.CATEGORIES_URL);
       console.log("Pringting Sublings result : ", result)
       // setSubLinks(result.data.data)
@@ -48,8 +51,9 @@ const Navbar = () => {
   }
 
   useEffect( () => {
+    console.log("Printing Token : ", token)
     // fetchSubLinks(); 
-    console.log("Use Effect Hook Used")
+    // console.log("Use Effect Hook Used")
   }, [])
 
   return (

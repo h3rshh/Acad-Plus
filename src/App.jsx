@@ -9,6 +9,7 @@ import { UpdatePassword } from 'pages/UpdatePassword';
 import Error from 'pages/Error';
 import { VerifyEmail } from 'pages/VerifyEmail';
 import { About } from 'pages/About';
+import { MyProfile } from 'components/core/Dashboard/MyProfile';
 
 const App = () => {
   return (
@@ -26,6 +27,7 @@ const App = () => {
          <Route path='verify-email' element={<VerifyEmail/>}/>
          <Route path='about' element={<About/>}/>
          <Route path='error' element={<Error/>} />
+         <Route path='dashboard/my-profile' element={<MyProfile/>} />
 
       </Routes>
       
