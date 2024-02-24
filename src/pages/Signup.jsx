@@ -1,9 +1,9 @@
 import React from 'react'
 import signupImg from "../assets/Images/login/signup.png"
 import Template from '../components/loginAndSignup/Template'
-import { signUp } from 'services/operations/authAPI'
+// import { signUp } from 'services/operations/authAPI'
 
-const SignUp = (props) => {
+const SignUp = () => {
 
  
 

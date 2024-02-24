@@ -7,8 +7,17 @@ export const Dashboard = () => {
 
    const {loading: authLoading} = useSelector( (state) => state.auth);
    const {loading: profileLoading} = useSelector( (state) => state.profile);
+   const {user} = useSelector((state) => state.profile)
 
-   if(authLoading || profileloading){
+   if(user === null) {
+      return(
+         <div>
+            User is Null
+         </div>
+      )
+   }
+
+   if(authLoading || profileLoading){
       return(
          <div className='mt-[10rem] text-4xl'>
             Loading
@@ -17,7 +26,7 @@ export const Dashboard = () => {
    }
 
   return (
-   <div className='relative flex min-h-[calc(100vh-2.5rem)]'>
+   <div className='relative flex min-h-[calc(100vh-2.5rem)] text-white'>
 
       <Sidebar/>
 

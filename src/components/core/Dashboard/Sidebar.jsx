@@ -27,7 +27,7 @@ export const Sidebar = () => {
    }
 
   return (
-    <div>
+    <div className='text-white'>
 
       <div className='flex min-w-[222px] flex-col border-r-[1px] border-r-richblack-700
          h-[calc(100vh-3.5rem)] bg-richblack-800 py-10'>

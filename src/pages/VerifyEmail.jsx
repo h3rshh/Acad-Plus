@@ -14,6 +14,7 @@ export const VerifyEmail = () => {
 
    useEffect( () => {
       if(!signupData){
+         console.log("Signup data not present")
          navigate("/signup")
       }
    }, [])
@@ -28,9 +29,7 @@ export const VerifyEmail = () => {
          lastName, 
          email,
          password,
-         confirmPassword,
-         otp,
-         navigate
+         confirmPassword
       } = signupData
 
       dispatch(signUp(accountType, firstName, lastName, 
@@ -84,7 +83,7 @@ export const VerifyEmail = () => {
                <button
                   className="flex items-center text-blue-100 gap-x-2"
                   onClick={() => dispatch(sendOtp(signupData.email))} >
-
+                     Resend It
                </button>
             </div>
 

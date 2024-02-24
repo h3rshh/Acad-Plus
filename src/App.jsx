@@ -10,6 +10,10 @@ import Error from 'pages/Error';
 import { VerifyEmail } from 'pages/VerifyEmail';
 import { About } from 'pages/About';
 import { MyProfile } from 'components/core/Dashboard/MyProfile';
+import { OpenRoute } from 'components/core/Auth/OpenRoute';
+import { PrivateRoute } from 'components/core/Auth/PrivateRoute';
+import { Dashboard } from 'pages/Dashboard';
+import { EnrolledCourses } from 'components/core/Dashboard/EnrolledCourses';
 
 const App = () => {
   return (
@@ -19,15 +23,22 @@ const App = () => {
 
       <Routes>
 
-         <Route path='/' element={<Home/>} />
-         <Route path='signup' element={<Signup/>} />
-         <Route path='login' element={<Login/>} />
-         <Route path='forgot-password' element={<ForgotPassword/>}/>
-         <Route path='update-password/:id' element={<UpdatePassword/>}/>
-         <Route path='verify-email' element={<VerifyEmail/>}/>
-         <Route path='about' element={<About/>}/>
-         <Route path='error' element={<Error/>} />
+         <Route path='/' element={<OpenRoute><Home/></OpenRoute>} />
+         <Route path='signup' element={<OpenRoute><Signup/></OpenRoute>} />
+         <Route path='login' element={<OpenRoute><Login/></OpenRoute>} />
+         <Route path='forgot-password' element={<OpenRoute><ForgotPassword/></OpenRoute>}/>
+         <Route path='update-password/:id' element={<OpenRoute><UpdatePassword/></OpenRoute>}/>
+         <Route path='verify-email' element={<OpenRoute><VerifyEmail/></OpenRoute>}/>
+         <Route path='about' element={<OpenRoute><About/></OpenRoute>}/>
          <Route path='dashboard/my-profile' element={<MyProfile/>} />
+        
+         <Route element={<PrivateRoute><Dashboard/></PrivateRoute>} />
+         <Route path='dashboard/Settings' element={<Settings/>} /> 
+         <Route path='dashboard/enrolled-courses' element={<EnrolledCourses/>} />
+         
+         {/* <Route path='' element={<PrivateRoute><Dashboard/></PrivateRoute>} /> */}
+         <Route path='*' element={<OpenRoute><Error/></OpenRoute>} />
+         
 
       </Routes>
       

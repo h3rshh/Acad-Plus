@@ -2,19 +2,21 @@ import React from 'react'
 import { useLocation } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import * as Icons from "react-icons/vsc"
+import { NavLink, matchPath } from 'react-router-dom';
+// import { resetCourseState}
 
-export const SidebarLinkRender = () => {
+export const SidebarLinkRender = ({link, iconName}) => {
   
-      const Icon = Iconst(iconName);
+      const Icon = Icons[iconName];
       const location = useLocation();
       const dispatch = useDispatch();
 
       const matchRoute = (route) => {
-         return matchRoute({path:route}, location.pathname)
+         return matchPath({path:route}, location.pathname)
       }
   
    return (
-    <div>
+    <div className='text-white'>
 
       <NavLink to={link.path} className={`relative px-8 py-2 text-sm font-medium
          ${matchRoute(link.path) ? "bg-yellow-800" : "bg-opacity-0"}`}>

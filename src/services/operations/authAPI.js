@@ -5,6 +5,8 @@ import { resetCart } from "../../slices/cartSlice"
 import { setUser } from "../../slices/profileSlice"
 import { apiConnector } from "../apiConnector"
 import { endpoints } from "../apis"
+// import { useNavigate } from "react-router-dom";
+
  
 
 const {
@@ -53,6 +55,7 @@ export function signUp(
   otp,
   navigate
 ) {
+  
   return async (dispatch) => {
     const toastId = toast.loading("Loading...")
     dispatch(setLoading(true))
@@ -138,7 +141,7 @@ export function resetPasswordToken(email , setEmailSent) {
     dispatch(setLoading(true));
     try{
       console.log("Entered try block")
-      const response = await apiConnector("POST", RESETPASSTOKEN_API, {email, setEmailSent})
+      const response = await apiConnector("POST", RESETPASSTOKEN_API, {email, })
 
       console.log("RESET PASSWORD TOKEN RESPONSE....", response);
 
