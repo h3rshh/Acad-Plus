@@ -2,10 +2,11 @@ import React from 'react'
 import {FaArrowRight} from "react-icons/fa"
 import HighLightText from './HighLightText';
 import CTAButton from './Button';
+import { TypeAnimation } from 'react-type-animation';
 
 
 const CodeBlocks = ({position, heading, subheading, ctabtn1, ctabtn2, codeblock,
-backgroundGradient, codeColor}) => {
+backgroundGradient, codeColor1, codeColor2, blurColor}) => {
 
   return (
     <div className={`flex ${position} my-20 justify-between gap-10 `}>
@@ -36,11 +37,16 @@ backgroundGradient, codeColor}) => {
 
 
         {/* Section 2 */}
-        <div className='h-fit flex flex-row text-[10px] w-[100%] py-4 lg:w-[500px]'>
+        <div className='h-fit relative flex flex-row text-[10px] w-[100%] py-4 lg:w-[500px]  bg-richblack-900 shadow-x-4 shadow-[-5px_-6px_5px_rgba(121,22,87,0.3),4px_10px_15px_#F37290] '>
 
             {/* BackGround Gradient HW */}
 
-            <div className='text-center flex flex-col w-[10%] text-richblack-400
+            <div className={`absolute w-[10rem] h-[10rem] rounded-full bg-${blurColor} left-[22%] blur-3xl`}>
+
+            </div>
+            
+
+            <div className='text-center text-[14px] flex flex-col w-[10%] text-richblack-400
                 font-inter font-bold '>
                 <p>1</p>
                 <p>2</p>
@@ -52,19 +58,20 @@ backgroundGradient, codeColor}) => {
                 <p>8</p>
                 <p>9</p>
                 <p>10</p>
+                <p>11</p>
             </div>
 
-            <div className={`w-[90%] flex flex-col gap-2 font-bold font-mono ${codeColor} pr-2`}>
-                {/* <TypeAnimation 
+            <div className={`w-[90%] flex text-[14px] flex-col gap-2 font-bold font-mono ${codeColor2} pr-2`}>
+                <TypeAnimation 
                     sequence={[codeblock, 3000, ""]}
                     cursor= {true}
                     repeat={Infinity} 
-                    omitDeletionAnimation={false}
+                    omitDeletionAnimation={true}
                     style ={{
                         whiteSpace: "pre-line",
                         display: ""
                     }}
-                    /> */}
+                    />
             </div>
         </div>
     </div>

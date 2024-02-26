@@ -5,7 +5,7 @@ const HighLightText = ({text}) => {
     <span className='font-bold text-blue-100' >
   {/* <span className='font-bold text-richblue-200 bg-gradient-to-r from-richblue-600 to-richblue-900'> */}
         
-        {text}
+       {" "} {text} {" "}
     </span>
   )
 }

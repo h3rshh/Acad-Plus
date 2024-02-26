@@ -14,6 +14,7 @@ import { OpenRoute } from 'components/core/Auth/OpenRoute';
 import { PrivateRoute } from 'components/core/Auth/PrivateRoute';
 import { Dashboard } from 'pages/Dashboard';
 import { EnrolledCourses } from 'components/core/Dashboard/EnrolledCourses';
+import Cart from 'components/core/Dashboard/Cart';
 
 const App = () => {
   return (
@@ -33,9 +34,10 @@ const App = () => {
          <Route path='dashboard/my-profile' element={<MyProfile/>} />
         
          <Route element={<PrivateRoute><Dashboard/></PrivateRoute>} />
-         <Route path='dashboard/Settings' element={<Settings/>} /> 
+         {/* <Route path='dashboard/Settings' element={<Settings/>} />  */}
          <Route path='dashboard/enrolled-courses' element={<EnrolledCourses/>} />
-         
+         <Route path='dashboard/cart' element={<Cart/>} />
+
          {/* <Route path='' element={<PrivateRoute><Dashboard/></PrivateRoute>} /> */}
          <Route path='*' element={<OpenRoute><Error/></OpenRoute>} />
          
