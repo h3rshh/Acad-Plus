@@ -38,6 +38,7 @@ export const UpdatePassword = () => {
       console.log("Submit Button Pressed")
       e.preventDefault();
       const token = location.pathname.split("/").at(-1);
+      console.log("Token : ", token)
       dispatch(resetPassword(password, confirmPassword, token)); 
    }
 

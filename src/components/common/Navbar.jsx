@@ -8,56 +8,56 @@ import {AiOutlineShoppingCart} from "react-icons/ai"
 import ProfileDropDown from '../core/Auth/ProfileDropDown'
 import { apiConnector } from '../../services/apiConnector'
 import { categories } from '../../services/apis'
+import { ACCOUNT_TYPE } from 'utils/constants'
 import {IoIosArrowDropdownCircle} from "react-icons/io"
 
 const Navbar = () => {
 
+  const {token} = useSelector( (state) => state.auth)
+  const {user} = useSelector( (state) => state.profile)
+  const {totalItems} = useSelector( (state) => state.cart)
+  const location = useLocation();
 
-  // const [subLinks, setSubLinks] = useState([{title:"python", link:"/catalog/python"}]);
+  const [subLinks, setSubLinks] = useState([]);
+  const [loading, setLoading] = useState(false);
 
-  const subLinks = [
-    {
-      title: "python",
-      link: "/catalog/python"
-    },
-    {
-      title: "web dev",
-      link: "/catalog/web-development"
-    }
-  ]
+  // const subLinks = [
+  //   {
+  //     title: "python",
+  //     link: "/catalog/python"
+  //   },
+  //   {
+  //     title: "web dev",
+  //     link: "/catalog/web-development"
+  //   }
+  // ]
 
   // const token = null;
 
-  const location = useLocation();
   
   const matchRoute = (route) => {
     return matchPath({path:route}, location.pathname);
   }
 
-  const {token} = useSelector( (state) => state.auth)
-  const {user} = useSelector( (state) => state.profile)
-  const {totalItems} = useSelector( (state) => state.cart)
-
-  const fetchSubLinks = async() => {
-    try{
-      // setSubLinks(null); 
-      const result = await apiConnector("GET", categories.CATEGORIES_URL);
-      console.log("Pringting Sublings result : ", result)
-      // setSubLinks(result.data.data)
-    }
-    catch(error){
-      console.log("Could Not Fetch the category List")
-    }
-  }
-
-  useEffect( () => {
-    console.log("Printing Token : ", token)
-    // fetchSubLinks(); 
-    // console.log("Use Effect Hook Used")
+  
+  useEffect(() => {
+    ;(async () => {
+      setLoading(true)
+      try {
+        const res = await apiConnector("GET", categories.CATEGORIES_API)
+        setSubLinks(res.data.data)
+        console.log("Response : ", res);
+        console.log("Sublinks : ", subLinks)
+      } catch (error) {
+        console.log("Could not fetch Categories.", error)
+      }
+      setLoading(false)
+    })()
   }, [])
 
   return (
-    <div className='flex h-14 items-center justify-center border-b-[1px] border-b-richblack-700'>
+    <div className={`flex h-14 items-center justify-center border-b-[1px] border-b-richblack-700
+      ${location.pathname !== "/" ? "bg-richblack-800" : ""} transition-all duration-200`}>
       
       <div className='flex w-11/12 max-w-maxContent justify-between items-center'>
          {/* Image */}
@@ -75,7 +75,8 @@ const Navbar = () => {
                 return <li key={index}>
                     {
                        link.title === "Catalog" ? (
-                       <div className='relative flex items-center gap-2 group'>
+                       <div className={`relative flex items-center gap-2 group
+                        ${matchRoute("/catalog/catalogName" ? "text-yellow-25" : "text-richblack-25")}`}>
                         
                           <p>{link.title}</p>
                           <IoIosArrowDropdownCircle />
@@ -94,11 +95,11 @@ const Navbar = () => {
                             {
                               subLinks.length ? (
                                 
-                                subLinks.map( (subLink, index) => {
+                                subLinks.map( (subLink, index) => (
                                   <Link to={`${subLink.link}`} key={index}>
-                                    <p>{subLink.title} </p>
+                                    <p>{subLink.name} </p>
                                   </Link>
-                                })
+                                ))
                               
                               ) : (<div>Nothing available in catalog</div>)  
                             }
