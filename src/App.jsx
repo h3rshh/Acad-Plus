@@ -21,6 +21,9 @@ const App = () => {
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const user = false;
+  const ACCOUNT_TYPE = false;
+  const AddCourse = false;
 
   return (
     <div className='w-screen min-h-screen bg-richblack-900 flex flex-col font-inter'>
@@ -48,6 +51,24 @@ const App = () => {
 
          {/* <Route path='' element={<PrivateRoute><Dashboard/></PrivateRoute>} /> */}
          <Route path='*' element={<OpenRoute><Error/></OpenRoute>} />
+
+         {
+          user?.accountType === ACCOUNT_TYPE.STUDENT && (
+            <>
+              <Route path='dashboard/cart' element={<Cart />}/>
+              <Route path='dashboard/enrolled-courses' element={<EnrolledCourses />}/>
+            </>
+          )
+         }
+
+{
+          user?.accountType === ACCOUNT_TYPE.STUDENT && (
+            <>
+              <Route path='dashboard/add-course' element={<AddCourse />}/>
+              {/* <Route path='dashboard/enrolled-courses' element={<EnrolledCourses />}/> */}
+            </>
+          )
+         }
          
 
       </Routes>
