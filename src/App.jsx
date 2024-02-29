@@ -45,6 +45,7 @@ const App = () => {
          <Route path='dashboard/my-profile' element={<MyProfile/>} />
         
          {/* <Route element={<PrivateRoute><Dashboard/></PrivateRoute>} /> */}
+         <Route path='dashboard' element={<Dashboard/>} />
          {/* <Route path='dashboard/Settings' element={<Settings/>} />  */}
          <Route path='dashboard/enrolled-courses' element={<EnrolledCourses/>} />
          <Route path='dashboard/cart' element={<Cart/>} />

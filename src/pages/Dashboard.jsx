@@ -9,18 +9,18 @@ export const Dashboard = () => {
    const {loading: profileLoading} = useSelector( (state) => state.profile);
    const {user} = useSelector((state) => state.profile)
 
-   if(user === null) {
-      return(
-         <div>
-            User is Null
-         </div>
-      )
-   }
+   // if(user === null) {
+   //    return(
+   //       <div>
+   //          User is Null
+   //       </div>
+   //    )
+   // }
 
    if(authLoading || profileLoading){
       return(
          <div className='mt-[10rem] text-4xl'>
-            Loading
+            Loading...
          </div>
       )
    }
@@ -34,6 +34,7 @@ export const Dashboard = () => {
 
          <div className='mx-auto w-11/12 max-w-[1000px] py-18'>
             <Outlet/>
+            Outlet
          </div>
 
       </div>

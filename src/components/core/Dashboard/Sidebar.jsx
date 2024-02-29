@@ -27,7 +27,7 @@ export const Sidebar = () => {
    }
 
   return (
-    <div className='text-white'>
+    <div classNa  e='text-white'>
 
       <div className='flex min-w-[222px] flex-col border-r-[1px] border-r-richblack-700
          h-[calc(100vh-3.5rem)] bg-richblack-800 py-10'>
@@ -43,6 +43,10 @@ export const Sidebar = () => {
                })
             }
          </div>  
+            
+         <div>
+            
+         </div>
 
          <div className='mx-auto mt-6 mb-6 h-[1px] w-10/12
             bg-richBlack-600'></div>

@@ -1,7 +1,7 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
 import { RenderCartCourses } from './RenderCartCourses';
-import { RenderTotalAmount } from './RenderTotalAmount';
+import { RenderTotalAmount  } from './RenderTotalAmount';
 
 export default function Cart() {
 
