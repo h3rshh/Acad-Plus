@@ -50,6 +50,8 @@ const App = () => {
          <Route path='dashboard/enrolled-courses' element={<EnrolledCourses/>} />
          <Route path='dashboard/cart' element={<Cart/>} />
 
+         <Route path='dashboard/add-course' element={AddCourse} />
+
          {/* <Route path='' element={<PrivateRoute><Dashboard/></PrivateRoute>} /> */}
          <Route path='*' element={<OpenRoute><Error/></OpenRoute>} />
 
