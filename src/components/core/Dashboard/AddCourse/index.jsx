@@ -1,8 +1,9 @@
 import React from 'react'
+import { RenderSteps } from './RenderSteps'
 
-export const index = () => {
+export default function AddCourse () {
   return (
-    <div>
+    <div className='text-white'>
 
       <div>
          <div>

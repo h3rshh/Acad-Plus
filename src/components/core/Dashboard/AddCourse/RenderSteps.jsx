@@ -1,6 +1,7 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
 import { FaCheck } from 'react-icons/fa'
+import { CourseInformationForm } from './CourseInformationForm/CourseInformationForm'
 
 export const RenderSteps = () => {
 
@@ -27,7 +28,7 @@ export const RenderSteps = () => {
       <div>
 
          {
-            steps.map( (item)> (
+            steps.map( (item) => (
                <>
                   <div>
 

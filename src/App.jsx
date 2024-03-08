@@ -16,6 +16,7 @@ import { Dashboard } from 'pages/Dashboard';
 import { EnrolledCourses } from 'components/core/Dashboard/EnrolledCourses';
 import Cart from 'components/core/Dashboard/Cart';
 import { useDispatch } from 'react-redux';
+import AddCourse from 'components/core/Dashboard/AddCourse';
 
 const App = () => {
 
