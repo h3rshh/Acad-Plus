@@ -7,24 +7,39 @@ import { BiSolidDownArrow } from 'react-icons/bi'
 import {AiOutlinePlus} from 'react-icons/ai'
 import SubSectionModal from './SubSectionModal'
 import { ConfirmationModal } from 'components/common/ConfirmationModal'
+import { deleteSection, deleteSubSection } from 'services/operations/courseDetailsAPI'
+import { setCourse } from 'slices/courseSlice'
 
 export const NestedView = ({handleChangedSectionName}) => {
   
    const {course} = useSelector( (state) => state.course);
    const {token} = useSelector((state) => state.auth)
    const dispatch = useDispatch();
+   
 
    const [addSubSection, setAddSubSection] = useState(null)
    const [viewSubSection, setViewSubSection] = useState(null)
    const [editSubSection, setEditSubSection] = useState(null)
-   const [confirmationModal, setConfirmModal] = useState(null)
+   const [confirmationModal, setConfirmationModal] = useState(null)
 
-   const handleDeleteSection = () => {
-
+   const handleDeleteSection = async(sectionId) => {
+      const result = await deleteSection({
+         sectionId,
+         courseId: course._id,
+         token, 
+      })
+      if(result){
+         dispatch(setCourse(result));
+      }
+      setConfirmationModal(null) 
    }
 
-   const handleDeleteSubSection = () => {
-
+   const handleDeleteSubSection = async({subSectionId, sectionId}) => {
+      const result = await deleteSubSection({subSectionId, sectionId, token})
+      if(result){
+         dispatch(setCourse(result))
+      }
+      setConfirmationModal(null)
    }
 
    return (
@@ -49,7 +64,7 @@ export const NestedView = ({handleChangedSectionName}) => {
 
                         <button 
                            onClick={() => {
-                              setConfirmModal({
+                              setConfirmationModal({
                                  text1: "Delete This Section",
                                  text2: "All the Lectures in this section will be deleted",
                                  btn1Text: "Delete",
@@ -87,7 +102,7 @@ export const NestedView = ({handleChangedSectionName}) => {
 
                                  <button 
                                     onClick={() => {
-                                       setConfirmModal({
+                                       setConfirmationModal({
                                           text1: "Delete This SubSection",
                                           text2: "Selected Lecture will be deleted",
                                           btn1Text: "Delete",
