@@ -124,7 +124,7 @@ export const CourseBuilderForm = () => {
 
       {
          course.courseContent.length > 0 && (
-            <NestedView />
+            <NestedView handleChangedSectionName={handleChangedSectionName} />
          )
       }
 
