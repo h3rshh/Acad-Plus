@@ -4,6 +4,7 @@ import { useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom';
 import { fetchInstructorCourses } from 'services/operations/courseDetailsAPI';
 import { CoursesTable } from './InstructorCourses/CoursesTable';
+import 'react-super-responsive-table/dist/SuperResponsiveTableStyle.css'
 
 export const MyCourse = () => {
 
@@ -23,9 +24,9 @@ export const MyCourse = () => {
 
   return (
 
-    <div>
+    <div className='text-white'>
       
-      <div>
+      <div className='flex justify-between'>
 
          <h1>My Courses</h1>
          <IconButton 

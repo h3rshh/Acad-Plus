@@ -3,6 +3,9 @@ import { useDispatch, useSelector } from 'react-redux'
 import { Table, Tbody, Thead, Tr, Th, Td } from 'react-super-responsive-table'
 import { deleteCourse, fetchInstructorCourses } from 'services/operations/courseDetailsAPI';
 import { setCourse } from 'slices/courseSlice';
+import 'react-super-responsive-table/dist/SuperResponsiveTableStyle.css'
+import { useNavigate } from 'react-router-dom';
+
 
 export const CoursesTable = ({courses, setCourses}) => {
 
@@ -10,6 +13,7 @@ export const CoursesTable = ({courses, setCourses}) => {
    const {token} = useSelector((state) => state.auth);
    const [loading, setLoading] = useState(false);
    const [confirmationModal, setConfirmationModal] = useState(null);
+   const navigate = useNavigate();
 
    const handleCourseDelete = async(courseId) => {
       setLoading(true)
@@ -29,7 +33,7 @@ export const CoursesTable = ({courses, setCourses}) => {
       <Table>
 
          <Thead>
-            <Tr>
+            <Tr className='flex gap-x-19 border-richblack-800 p-8'>
                <Th>Courses</Th>
                <Th>Duration</Th>
                <Th>Price</Th>
@@ -82,7 +86,11 @@ export const CoursesTable = ({courses, setCourses}) => {
                         </Td>
 
                         <Td>
-                           <button disabled={loading}>
+                           <button disabled={loading} className='mr-[19px]'
+                              onClick={() => {
+                                 navigate(`/dashboard/edit-course/${course._id}`)
+                              }}
+                           >
                               EDIT
                            </button>
 
