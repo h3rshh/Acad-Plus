@@ -37,6 +37,10 @@ export const NestedView = ({handleChangedSectionName}) => {
    const handleDeleteSubSection = async({subSectionId, sectionId}) => {
       const result = await deleteSubSection({subSectionId, sectionId, token})
       if(result){
+         const updatedCourseContent = course.courseContent.map((section) =>
+         section._id === sectionId ? result : section);
+
+         const updatedCousrse = {...course, courseContent: upda}
          dispatch(setCourse(result))
       }
       setConfirmationModal(null)
@@ -58,7 +62,7 @@ export const NestedView = ({handleChangedSectionName}) => {
                      </div>
 
                      <div className='flex items-center gap-x-3'>
-                        <button onClick={handleChangedSectionName}>
+                        <button onClick={() => handleChangeEditSectionName(section._id, section.sectionName)}>
                            <MdEdit />
                         </button>
 
@@ -95,7 +99,12 @@ export const NestedView = ({handleChangedSectionName}) => {
                                  <p>{data.title}</p>
                               </div>
 
-                              <div className='flex items-center gap0x03'>
+                              <div className='flex items-center gap-x-3'
+                                 onClick={(e) => e.stopPropagation()}
+                              >
+                                 {/* Earlier the view modal was opening unnecessarily even when the
+                                 edit or delete were called. This is stopped using stopPropogation
+                                 as it prevents view from opening without reason */}
                                  <button onClick={() => setEditSubSection({...data, sectionId: section._id})}>
                                     <MdEdit />
                                  </button>
