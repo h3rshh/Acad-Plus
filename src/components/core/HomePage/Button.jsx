@@ -1,7 +1,7 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
 
-const CTAButton = ({children, active, linkto}) => {
+const Button = ({children, active, linkto}) => {
   return (
     <NavLink >
         <div className={`text-center text-[14px] px-6 py-3 rounded-md font-bold
@@ -13,4 +13,4 @@ const CTAButton = ({children, active, linkto}) => {
   )
 }
 
-export default CTAButton
+export default Button
