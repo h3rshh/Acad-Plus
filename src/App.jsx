@@ -19,6 +19,7 @@ import { useDispatch } from 'react-redux';
 import AddCourse from 'components/core/Dashboard/AddCourse';
 import { MyCourse } from 'components/core/Dashboard/MyCourse';
 import EditCourse from 'components/core/Dashboard/EditCourse';
+import Catalog from 'pages/Catalog';
 
 const App = () => {
 
@@ -54,6 +55,7 @@ const App = () => {
          <Route path='dashboard/cart' element={<Cart/>} />
 
          <Route path='dashboard/add-course' element={AddCourse} />
+         <Route path='catalog' element={<Catalog />} />
 
          {/* <Route path='' element={<PrivateRoute><Dashboard/></PrivateRoute>} /> */}
          <Route path='*' element={<OpenRoute><Error/></OpenRoute>} />
