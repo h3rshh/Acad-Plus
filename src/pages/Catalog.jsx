@@ -32,7 +32,10 @@ const Catalog = () => {
          catch(error){
             console.log(error)
          }
-         getCategoryDetails()
+         
+         if(categoryId){
+            getCategoryDetails()
+         }
       }
    }, [categoryId])
 
