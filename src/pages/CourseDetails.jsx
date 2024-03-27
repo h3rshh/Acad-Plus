@@ -143,6 +143,12 @@ const CourseDetails = () => {
 
                <span>{courseData.data?.totalNoOfLectures} Total Length</span>         
             </div>
+
+            <div>
+               <button onClick={() => setIsActive([])}>
+                  Collapse All Sections
+               </button>
+            </div>
             
          </div>
 

@@ -20,6 +20,8 @@ import AddCourse from 'components/core/Dashboard/AddCourse';
 import { MyCourse } from 'components/core/Dashboard/MyCourse';
 import EditCourse from 'components/core/Dashboard/EditCourse';
 import Catalog from 'pages/Catalog';
+import ViewCourse from 'pages/ViewCourse';
+
 
 const App = () => {
 
@@ -59,6 +61,8 @@ const App = () => {
 
          {/* <Route path='' element={<PrivateRoute><Dashboard/></PrivateRoute>} /> */}
          <Route path='*' element={<OpenRoute><Error/></OpenRoute>} />
+
+         <Route path='' element={<ViewCourse/>} />
 
          {
           user?.accountType === ACCOUNT_TYPE.STUDENT && (
