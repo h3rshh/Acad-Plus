@@ -5,7 +5,7 @@ import { getFullDetailsOfCourse } from 'services/operations/courseDetailsAPI';
 import { setCompletedLectures, setCourseSectionData, setEntireCourseData, setTotalNoOfLectures } from 'slices/viewCourseSlice';
 import { Outlet } from 'react-router-dom';
 import VideoDetailsSidebar from '../components/core/ViewCourse/VideoDetailsSidebar'
-// import CourseReviewModal
+import CourseReviewModal from 'components/core/ViewCourse/CourseReviewModal';
 
 const ViewCourse = () => {
 

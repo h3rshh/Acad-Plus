@@ -84,11 +84,45 @@ const VideoDetailsSidebar = ({setReviewModal}) => {
                      onClick={() => setActiveStatus(course?._id)}
                      key={index}
                   >
+                     {/* Section */}
                      
-                     
-                     <div>
+                     <div className=''>
+                        <div>
+                           {course?.sectionName}
+                        </div>
+                        {/* HW- add arrow icon here and handle rotate right login */}
 
                      </div>
+
+                     {/* Sub Sections */}
+                     <div className=''>
+                        {
+                           activeStatus === course?._id && (
+                              <div>
+                                 {course.subSection.map((topic, index) => {
+                                    <div className={`flex gap-5 p-5 
+                                    ${videoBarActive === topic._id ? "bg-yellow-200 text-richblack-900"
+                                    : "bg-richblack-900 text-white" }`}
+                                    key={index}
+                                    onClick={() => {
+                                       navigate(`/view-course/${courseEntireData?._id}/section/${course?._id}/sub-section/${topic?._id}`)
+                                        
+                                    }}
+                                    >
+                                       
+                                       <input 
+                                          type='checkbox'
+                                          checked={completedLectures.includes(topic._id)}
+                                          onChange={() => {}}
+                                       />
+                                       <span>{topic.title}</span>
+                                    </div>
+                                 })}
+                              </div>
+                           )
+                        }
+                     </div>
+
                   </div>
                })
             }
