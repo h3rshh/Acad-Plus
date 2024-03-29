@@ -129,6 +129,13 @@ const VideoDetailsSidebar = ({setReviewModal}) => {
          </div>
 
       </div>
+
+      <div className='bg-yellow-50 min-h-[400px] '>
+         <IconButton 
+            text='Add Review'
+            onClick={() => setReviewModal(true)}
+         />
+      </div>
    
    
    </div>

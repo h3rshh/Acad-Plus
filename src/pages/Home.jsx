@@ -11,6 +11,7 @@ import LearningLanguage from "../components/core/HomePage/LearningLanguage";
 import Timeline from "../components/core/HomePage/Timeline"
 import InstructorSection from '../components/core/HomePage/InstructorSection';
 import ExploreMore from '../components/core/HomePage/ExploreMore';
+import ReviewSliderHome from 'components/common/ReviewSliderHome';
 
 const Home = () => {
 
@@ -187,6 +188,8 @@ const Home = () => {
 
             <h2 className='text-center text-4xl font-semibold mt-10'>Reviews From Other Learners`</h2>
              
+            {/* Review Slider */}
+            <ReviewSliderHome />
         </div>   
 
         
