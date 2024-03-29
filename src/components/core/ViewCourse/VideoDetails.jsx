@@ -24,7 +24,7 @@ const VideoDetails = () => {
   const [videoEnded, setVideoEnded] = useState(false);
   const [loading, setLoading] = useState(false);
 
-  const useEffect(() => {
+  useEffect(() => {
 
     const setVideoSpecificDetails = async () => {
 
@@ -141,7 +141,7 @@ const VideoDetails = () => {
 
   }
 
-  const handleLectureCompletion = () => {
+  const handleLectureCompletion = async() => {
     // To be completed later, Filler code here
     setLoading(true);
     const res = await markLectureAsComplete({courseId: courseId, subSectionId: subSectionId}, token);
