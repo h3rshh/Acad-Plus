@@ -23,11 +23,11 @@ const CourseReviewModel = ({setReviewModal}) => {
       setValue("courseRating", "0")
    }, [])
 
-   const ratingChanged = () => {
+   const ratingChanged = (newRating) => {
       setValue("courseRating", newRating)
    }
 
-   const onSubmit = () => {
+   const onSubmit = async (data) => {
       createRating(
          {
             courseId: courseEntireData._id,
