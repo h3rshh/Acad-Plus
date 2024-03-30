@@ -9,10 +9,21 @@ import { apiConnector } from 'services/apiConnector'
 import { ratingsEndpoints } from 'services/apis'
 import { FaStar } from 'react-icons/fa'
 
+
 const ReviewSliderHome = () => {
 
-   const [reviews, setReviews] = useState([]);
+   const dummyRatingAndReview = ({
+      user: "60f7b26739e1ff001b9612d2", // User ID
+      rating: 5,
+      review: "Excellent service!"
+    });
+
+   const [reviews, setReviews] = useState([dummyRatingAndReview]);
    const truncateWords = 15;
+
+   // let reviews = {
+
+   // }
 
    useEffect(() => {
       const fetchAllReviews = async () => {
@@ -22,6 +33,7 @@ const ReviewSliderHome = () => {
          const {data} = response;
          if(data?.success){
             setReviews(data?.data);
+            console.log("Fetch Success")
          }
 
          console.log("Printing Reviews : ", reviews)
@@ -45,7 +57,7 @@ const ReviewSliderHome = () => {
                className='w-full'
             >
                {
-                  reviews.map((review, index) => {
+                  reviews !== undefined && reviews !== null && reviews.map((review, index) => (
                      <SwiperSlide key={index}>
                         <img 
                            src={review?.user?.image ? review?.user?.image : `https://api.dicebear.com/5.x/initials/svg?seed=${review?.user?.firstName} ${review?.user?.lastName}`}
@@ -59,20 +71,20 @@ const ReviewSliderHome = () => {
 
                         <p>{review?.review}</p>
 
-                        <p>{review?.rating.toFixes(1)}</p>
+                        <p>{review?.rating.toFixed(1)}</p>
 
                         <ReactStars 
                            count={5}
                            size={20}
                            edit={false}
-                           value={reviews.rating}
+                           value={review.rating}
                            emptyIcon={<FaStar />}
                            fullIcon={<FaStar />}
                            activeColor="#ffd700"
                         />
 
                      </SwiperSlide>
-                  })
+                  ))
                }
             </Swiper>
          </div>

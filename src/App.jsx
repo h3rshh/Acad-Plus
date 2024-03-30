@@ -16,13 +16,12 @@ import { Dashboard } from 'pages/Dashboard';
 import { EnrolledCourses } from 'components/core/Dashboard/EnrolledCourses';
 import Cart from 'components/core/Dashboard/Cart';
 import { useDispatch } from 'react-redux';
-// import {AddCourse} from 'components/core/Dashboard/AddCourse';
 import { MyCourse } from 'components/core/Dashboard/MyCourse';
 import EditCourse from 'components/core/Dashboard/EditCourse';
 import Catalog from 'pages/Catalog';
 import ViewCourse from 'pages/ViewCourse';
+import Contact from 'pages/Contact';
 import AddCourse from 'components/core/Dashboard/AddCourse';
-
 
 const App = () => {
 
@@ -48,7 +47,7 @@ const App = () => {
          <Route path='about' element={<About/>}/>
 
          <Route path='/about' element={<About/>}/>
-         <Route path='about' element={<About/>}/>
+         <Route path='/contact' element={<Contact />} />
          <Route path='dashboard/my-profile' element={<MyProfile/>} />
         
          {/* <Route element={<PrivateRoute><Dashboard/></PrivateRoute>} /> */}

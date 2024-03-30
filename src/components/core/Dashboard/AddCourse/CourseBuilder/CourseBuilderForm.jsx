@@ -6,14 +6,18 @@ import { BiRightArrow } from 'react-icons/bi';
 import { useDispatch } from 'react-redux';
 import { createSection, updateSection } from 'services/operations/courseDetailsAPI';
 import { setLoading } from 'slices/authSlice';
-import { setCourse, setEditCourse } from 'slices/courseSlice';
-import NestedView from './NestedView'
+import { setCourse, setEditCourse, setStep } from 'slices/courseSlice';
+import toast from 'react-hot-toast';
+import { useSelector } from 'react-redux';
+import { NestedView } from './NestedView';
 
 export const CourseBuilderForm = () => {
 
    const {register, handleSubmit, setValue, formState: {errors}} = useForm();
    const [editSectionName, setEditSectionName] = useState(null);
    const dispatch = useDispatch();
+   const { course } = useSelector((state) => state.course)
+   const { token } = useSelector((state) => state.auth)
 
    const cancelEdit = () => {
       setEditSectionName(null);
@@ -82,23 +86,25 @@ export const CourseBuilderForm = () => {
    }
 
   return (
-    <div className='text-white'>
+   <div className="space-y-8 rounded-md border-[1px] border-richblack-700 bg-richblack-800 p-6">
 
-      <p>Course Builder</p>
+      <p className="text-2xl font-semibold text-richblack-5">Course Builder</p>
 
-      <form className='' onSubmit={handleFormSubmit}>
+      <form className='space-x-4' onSubmit={handleSubmit(handleFormSubmit)}>
 
-         <div>
-            <label>Section Name <sup>*</sup></label>
+         <div className="flex flex-col space-y-2">
+            <label className="text-sm text-richblack-5" htmlFor="sectionName">
+               Section Name <sup>*</sup></label>
             <input 
                id='sectionName'
                placeholder='Add Section Name'
                {...register('sectionName', {required:true})}
+               className='form-style w-full'
             />
 
             {errors.sectionName && (
-               <span className=''
-               >Section Name is Required </span>
+            <span className="ml-2 text-xs tracking-wide text-pink-200">
+               Section Name is Required </span>
             )}
 
          </div>

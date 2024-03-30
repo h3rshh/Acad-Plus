@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import { useSelector } from 'react-redux';
 
 export const RequirementField = ({name, label, register, setValue, getValues}) => {
 

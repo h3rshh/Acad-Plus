@@ -30,7 +30,7 @@ const Navbar = () => {
         console.log("Res.data.data : ", res.data)
         setSubLinks(res.data.data)
       } catch (error) {
-        console.log("Could not fetchfirst Categories.", error)
+        console.log("Could not fetch first Categories.", error)
       }
       setLoading(false)
     })()

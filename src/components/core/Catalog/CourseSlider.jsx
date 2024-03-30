@@ -18,13 +18,12 @@ const CourseSlider = ({Courses}) => {
                slidesPerView={1} 
                spaceBetween={200} 
                modules={[Autoplay, Pagination, Navigation]}
-               className='mySwiper' 
+               className='mySwiper max-h-[30rem]' 
                pagination={true}
                onAutoplay={{
                   delay:1000,
                   disableOnInteractions: true,
                }}
-
             >
                {
                   Courses?.map((course, index) => {
@@ -35,8 +34,8 @@ const CourseSlider = ({Courses}) => {
                }
             </Swiper>
          ) : (
-            <div>No Courses Found</div>
-         ) 
+            <p className="text-xl text-richblack-5">No Course Found</p>
+            ) 
       }      
    </div>
   )

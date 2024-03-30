@@ -40,7 +40,7 @@ export const NestedView = ({handleChangedSectionName}) => {
          const updatedCourseContent = course.courseContent.map((section) =>
          section._id === sectionId ? result : section);
 
-         const updatedCousrse = {...course, courseContent: upda}
+         const updatedCousrse = {...course, courseContent: updatedCourseContent}
          dispatch(setCourse(result))
       }
       setConfirmationModal(null)
@@ -55,15 +55,16 @@ export const NestedView = ({handleChangedSectionName}) => {
             course?.courseContent?.map( (section) => {
                <details key={section._id} open>
 
-                  <summary className='flex items-center justify-between gap-x-3 border-b-2'>
-                     <div>
-                        <RxDropdownMenu />
-                        <p>{section.sectionName}</p>
+                  <summary className="flex cursor-pointer items-center justify-between border-b-2 border-b-richblack-600 py-2">
+                     <div className="flex items-center gap-x-3">
+                        <RxDropdownMenu className="text-2xl text-richblack-50"/>
+                        <p className="font-semibold text-richblack-50">
+                           {section.sectionName}</p>
                      </div>
 
                      <div className='flex items-center gap-x-3'>
-                        <button onClick={() => handleChangeEditSectionName(section._id, section.sectionName)}>
-                           <MdEdit />
+                        <button onClick={() => handleChangedSectionName(section._id, section.sectionName)}>
+                           <MdEdit className="text-xl text-richblack-300" />
                         </button>
 
                         <button 
@@ -78,25 +79,27 @@ export const NestedView = ({handleChangedSectionName}) => {
                               })
                            }}
                         >
-                           <RiDeleteBin6Line />
+                           <RiDeleteBin6Line className="text-xl text-richblack-300" />
                         </button>
 
-                        <span></span>
+                        <span className="font-medium text-richblack-300">|</span>
 
                         <BiSolidDownArrow className='text-xl text-richblack-300' />
                      </div>
                   </summary>
 
-                  <div>
+                  <div className='px-6 pb-4'>
                      {
                         section.subSection.map( (data) => {
                            <div key={data?.id}
                               onClick={() => setViewSubSection(data)}
                               className='flex items-center justify-between gap-x-3 border-b-2'
                            >
-                              <div className='flex items-center gap-x-3'>
-                                 <RxDropdownMenu />
-                                 <p>{data.title}</p>
+                              <div className="flex items-center gap-x-3 py-2 ">
+                                 <RxDropdownMenu className="text-2xl text-richblack-50" />
+                                 <p className="font-semibold text-richblack-50">
+                                    {data.title}
+                                 </p> 
                               </div>
 
                               <div className='flex items-center gap-x-3'
@@ -106,7 +109,7 @@ export const NestedView = ({handleChangedSectionName}) => {
                                  edit or delete were called. This is stopped using stopPropogation
                                  as it prevents view from opening without reason */}
                                  <button onClick={() => setEditSubSection({...data, sectionId: section._id})}>
-                                    <MdEdit />
+                                    <MdEdit className="text-xl text-richblack-300" />
                                  </button>
 
                                  <button 
@@ -121,7 +124,7 @@ export const NestedView = ({handleChangedSectionName}) => {
                                        })
                                     }}
                                  >
-                                    <RiDeleteBin6Line />
+                                     <RiDeleteBin6Line className="text-xl text-richblack-300" />
                                  </button>
 
                               </div>
@@ -132,7 +135,7 @@ export const NestedView = ({handleChangedSectionName}) => {
                      <button className='mt-4 flex items-center gap-x-2 text-yellow-50'
                         onClick={setAddSubSection(section._id)}
                      >
-                        <AiOutlinePlus />
+                        <AiOutlinePlus className='text-lg'/>
                         <p>Add Lecture</p>
                      </button>
                   </div>

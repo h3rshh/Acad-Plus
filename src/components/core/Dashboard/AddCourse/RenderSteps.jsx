@@ -1,7 +1,9 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
 import { FaCheck } from 'react-icons/fa'
-import { CourseInformationForm } from './CourseInformationForm/CourseInformationForm'
+import CourseInformationForm from './CourseInformationForm/CourseInformationForm'
+import { CourseBuilderForm } from './CourseBuilder/CourseBuilderForm'
+import { PublishCourse } from './PublishCourse'
 
 export const RenderSteps = () => {
 
@@ -60,9 +62,9 @@ export const RenderSteps = () => {
          }
       </div>
 
-      {/* {step === 1 && <CourseInformationForm />} */}
-      {/* {step === 2 && <CourseBuilderForm />}
-      {step === 3 && <PublishCourse />} */}
+      {step === 1 && <CourseInformationForm />}
+      {step === 2 && <CourseBuilderForm />}
+      {step === 3 && <PublishCourse />} 
 
     </div>
   )

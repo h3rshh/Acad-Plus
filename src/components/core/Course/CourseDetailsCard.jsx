@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom'
 import copy from 'copy-to-clipboard'
 import {Toast} from 'react-hot-toast'
 import { ACCOUNT_TYPE } from 'utils/constants'
+import { FaShareSquare } from 'react-icons/fa'
 
 const CourseDetailsCard = ({course, setConfirmationModal, handleBuyCourse}) => {
 
@@ -42,7 +43,7 @@ const CourseDetailsCard = ({course, setConfirmationModal, handleBuyCourse}) => {
    } = course
 
   return (
-   <div className=''>
+   <div className={`flex flex-col gap-4 rounded-md bg-richblack-700 p-4 text-richblack-5`} >
 
       <img 
          src={ThumbnailImage}
@@ -50,11 +51,11 @@ const CourseDetailsCard = ({course, setConfirmationModal, handleBuyCourse}) => {
          className='max-h-[300px] min-h-[180px] w-[400px] rounded-xl'
       />
 
-      <div>
-         Rs. {CurrentPrice}
+      <div className="px-4">
+         <p className="space-x-3 pb-4 text-3xl font-semibold">Rs. {CurrentPrice} </p>
       </div>
 
-      <div>
+      <div className='flex flex-col gap-4'>
          <button className='bg-yellow-50 w-fit text-richblack-900'
             onClick={
             user && course?.studentsEnrolled.includes(user?._id) 
@@ -78,11 +79,14 @@ const CourseDetailsCard = ({course, setConfirmationModal, handleBuyCourse}) => {
 
       <div>
 
-         <p>30 Day Money Back Guarantee</p>
+         <p className="pb-3 pt-6 text-center text-sm text-richblack-25">
+            30-Day Money-Back Guarantee
+         </p>
 
-         <p>This Course Includes : </p>
+         <p className={`my-2 text-xl font-semibold `}>
+              This Course Includes :</p>
 
-         <div className='flex flex-col gap-x-3'>
+         <div className='flex flex-col gap-x-3 text-caribbeangreen-100'>
             {
                course?.instructions?.map((item, index) => {
                   <p key={index} className='flex gap-2'>
@@ -94,11 +98,11 @@ const CourseDetailsCard = ({course, setConfirmationModal, handleBuyCourse}) => {
 
       </div>
 
-      <div className=''>
+      <div className='text-center'>
          <button className='mx-auto flex items-center gap-2 p-6 text-yellow-50'
             onClick={handleShare}
          >
-            Share
+            <FaShareSquare size={15} /> Share
          </button>
       </div>
 

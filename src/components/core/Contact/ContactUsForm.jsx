@@ -1,43 +1,46 @@
-import React, { useEffect, useState } from 'react'
-import { set, useForm } from 'react-hook-form'
-import { apiConnector } from 'services/apiConnector';
-import { contactusEndpoint } from 'services/apis';
-import CountryCode from "../../data/countrycode.json"
+import React, { useEffect, useState } from "react"
+import { useForm } from "react-hook-form"
 
-export const ContactFormComponent = () => {
+import CountryCode from '../../../data/countrycode.json'
+import { apiConnector } from "services/apiConnector"
+import { contactusEndpoint } from "services/apis"
 
-  const [loading, setLoading] = useState(false);
+const ContactUsForm = () => {
+  const [loading, setLoading] = useState(false)
   const {
     register,
     handleSubmit,
     reset,
-    formState: {errors, isSubmitSuccessful}
-  } = useForm();
+    formState: { errors, isSubmitSuccessful },
+  } = useForm()
 
   const submitContactForm = async (data) => {
-    console.log("Logging Data : ", data)
-    try{
-      setLoading(true);
-      const response = await apiConnector("POST", contactusEndpoint.CONTACT_US_API, data);
-      // const response = {status: "OK"};
-      console.log("Logging Response : ", response);
+    // console.log("Form Data - ", data)
+    try {
+      setLoading(true)
+      const res = await apiConnector(
+        "POST",
+        contactusEndpoint.CONTACT_US_API,
+        data
+      )
+      // console.log("Email Res - ", res)
       setLoading(false)
-    } 
-    catch(error){
-      console.log("Error : ", error.message);
-      setLoading(false);
+    } catch (error) {
+      console.log("ERROR MESSAGE - ", error.message)
+      setLoading(false)
     }
   }
 
-  useEffect( () => {
-     if(isSubmitSuccessful){
+  useEffect(() => {
+    if (isSubmitSuccessful) {
       reset({
         email: "",
-        firstName: "",
-        lastName: "",
-        phoneNum: "",
+        firstname: "",
+        lastname: "",
+        message: "",
+        phoneNo: "",
       })
-     }
+    }
   }, [reset, isSubmitSuccessful])
 
   return (
@@ -181,3 +184,5 @@ export const ContactFormComponent = () => {
     </form>
   )
 }
+
+export default ContactUsForm
